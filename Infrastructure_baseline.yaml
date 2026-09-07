@@ -1,0 +1,95 @@
+# Basic infrastructure components - learners must implement security controls
+
+infrastructure:
+  compute:
+    spark_cluster:
+      # Spark cluster configuration
+      nodes:
+        driver:
+          instance_type: "m5.xlarge"
+          count: 1
+
+        workers:
+          instance_type: "m5.xlarge"
+          min_count: 2
+          max_count: 6
+
+        auto_scaling:
+          enabled: true
+          min_workers: 2
+          max_workers: 6
+
+      security_groups:
+        - "spark-cluster-security-group"
+
+  storage:
+    data_lake:
+      # Data lake storage configuration
+      bucket_config:
+        bucket_name: "data-infrastructure-optimization-lake"
+        encryption:
+          enabled: true
+          type: "AES256"
+
+        access_control:
+          public_access: false
+          authentication: "IAM"
+          authorization: "least_privilege"
+
+        lifecycle_policy:
+          enabled: true
+          transition_after_days: 30
+          expiration_after_days: 365
+
+  networking:
+    vpc:
+      # Network configuration
+      cidr_block: "10.0.0.0/16"
+      availability_zones:
+        - "us-west-2a"
+        - "us-west-2b"
+
+      subnets:
+        public:
+          cidr_block: "10.0.1.0/24"
+
+        private:
+          cidr_block: "10.0.2.0/24"
+
+      security_groups:
+        - "spark-cluster-security-group"
+        - "data-lake-security-group"
+
+      routing:
+        internet_gateway: true
+        private_subnet_nat_gateway: true
+
+  security:
+    # Security controls
+    encryption:
+      enabled: true
+      data_at_rest: "AES256"
+      data_in_transit: "TLS"
+
+    access_control:
+      enabled: true
+      authentication: "IAM"
+      authorization: "least_privilege"
+      public_access: false
+
+    network_isolation:
+      enabled: true
+      private_subnets: true
+      security_groups_enabled: true
+      restrict_public_access: true
+
+# Configuration parameters for different environments
+
+environments:
+  dev:
+    cluster_size: "small"
+    data_retention_days: 30
+
+  prod:
+    cluster_size: "medium"
+    data_retention_days: 365
