@@ -26,6 +26,44 @@ The project focuses on:
 - YAML
 - Git / GitHub
 
+## Testing
+
+The project includes automated tests using `pytest`.
+
+Run the complete test suite:
+
+```bash
+python -m pytest -q
+```
+
+## Architecture
+
+The project is organized into the following components:
+
+```text
+Data Infrastructure Optimization Project
+│
+├── spark_optimizer.py
+│   └── Spark performance and execution analysis
+│
+├── data_pipeline_optimizer.py
+│   └── Data skew, partitioning, salting, joins, benchmarking
+│
+├── data_lake_transactions.py
+│   └── Delta Lake transactions, time travel, rollback
+│
+├── storage_evaluator.py
+│   └── Infrastructure and security evaluation
+│
+├── Infrastructure_baseline.yaml
+│   └── Infrastructure configuration
+│
+└── tests/
+	├── test_data_pipeline_optimizer.py
+	├── test_storage_evaluator.py
+	└── test_data_lake_transactions.py
+```
+
 ## Project Components
 
 ### 1. Spark Performance Optimization
@@ -56,11 +94,10 @@ key, and skew ratio.
 The skew mitigation benchmark compares normal aggregation with a salted
 aggregation strategy.
 
-> Note: In the local test, the salted aggregation was slower than the
-> unsalted aggregation. The measured result was approximately **26.25% slower**.
-> This is expected for a very small test dataset because salting introduces
-> additional aggregation overhead. The result is reported as measured rather
-> than being presented as a guaranteed performance improvement.
+> Note: In the latest local execution, the salted aggregation completed
+> approximately **7.78% faster** than the unsalted aggregation. This result
+> is specific to the local test dataset and environment and should not be
+> interpreted as a guaranteed performance improvement for larger workloads.
 
 ### 3. Delta Lake Transactions
 
