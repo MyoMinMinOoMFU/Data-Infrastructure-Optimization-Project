@@ -26,6 +26,26 @@ The project focuses on:
 - YAML
 - Git / GitHub
 
+## Usage
+
+Run the Spark optimization analysis:
+
+```bash
+python data_pipeline_optimizer.py
+```
+
+Run the Delta Lake transaction demonstration:
+
+```bash
+python data_lake_transactions.py
+```
+
+Run the infrastructure and security evaluation:
+
+```bash
+python storage_evaluator.py
+```
+
 ## Project Structure
 
 ```text
@@ -34,6 +54,7 @@ Data-Infrastructure-Optimization-Project/
 ├── spark_optimizer.py
 ├── data_pipeline_optimizer.py
 ├── data_lake_transactions.py
+├── storage_evaluator.py
 ├── Infrastructure_baseline.yaml
 ├── README.md
 └── .gitignore
