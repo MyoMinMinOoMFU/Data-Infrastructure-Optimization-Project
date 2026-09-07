@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+
+delta_tables/
+*.parquet
+*.crc
+
+.DS_Store
+.idea/
+.vscode/
