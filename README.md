@@ -94,10 +94,11 @@ key, and skew ratio.
 The skew mitigation benchmark compares normal aggregation with a salted
 aggregation strategy.
 
-> Note: In the latest local execution, the salted aggregation completed
-> approximately **7.78% faster** than the unsalted aggregation. This result
-> is specific to the local test dataset and environment and should not be
-> interpreted as a guaranteed performance improvement for larger workloads.
+> Note: In the latest local benchmark, the salted aggregation completed
+> approximately **7.78% faster** than the unsalted aggregation. Benchmark
+> results can vary depending on dataset size, Spark execution state, and local
+> environment. The result is reported as measured rather than being presented
+> as a guaranteed performance improvement.
 
 ### 3. Delta Lake Transactions
 
